@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+site_url: https://elavielb.netlify.app
+
+collections:
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "_products"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Skincare", value: "skincare" }
+          - { label: "Makeup", value: "makeup" }
+          - { label: "Haircare", value: "haircare" }
+      - { label: "Price (USD)", name: "price", widget: "number", value_type: "float" }
+      - { label: "Sale Price (leave empty if no sale)", name: "sale_price", widget: "number", value_type: "float", required: false }
+      - { label: "Product Image", name: "image", widget: "image", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Badge"
+        name: "badge"
+        widget: "select"
+        required: false
+        options:
+          - { label: "New", value: "new" }
+          - { label: "Best Seller", value: "bestseller" }
+          - { label: "Sale", value: "sale" }
+          - { label: "Favorite", value: "favorite" }
